@@ -1,7 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<string> items;
+vector<string> itemsName;
+vector<double> itemsCost;
+
 
 class cart{
   //private by default so you can declare vars at the top and not worry about it
@@ -11,11 +13,12 @@ class cart{
     cart(string item){
       //cout << "I am a constructor";
     cout << "Added: " + item << endl;
-    items.push_back(item);
+    itemsName.push_back(item);
     }
     void setCost(double price){
       cost = price;
       cout << "Item Costs: " + to_string(cost) << endl;
+      itemsCost.push_back(cost * tax);
     }
     double getCost(){
       return cost * tax;
@@ -43,10 +46,10 @@ int main() {
     shopping = (continueShop == "no")?false:true;
   }
   cout << "\u001b[36mItems in cart\u001b[33m" << endl;
-  for(auto it = items.begin(); it != items.end(); it++){
-    cout << *it << endl;
+  for(int i = 0; i < itemsName.size(); i++){
+    cout << itemsName[i] << " - $"<< itemsCost[i] << endl;
   }
   
-  cout << endl << endl << "\u001b[37mGrandtotal is \u001b[33m" + to_string(grandTotal);
+  cout << endl << endl << "\u001b[37mGrandtotal is \u001b[33m$" + to_string(grandTotal);
   return 0;
 } 
